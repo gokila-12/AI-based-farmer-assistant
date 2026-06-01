@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ text.login }}</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+html, body{
+height:100%;
+margin:0;
+}
+
+.login-bg{
+height:100vh;
+width:100%;
+background-image:url("{{ url_for('static', filename='images/farmer_background.jpg') }}");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.login-box{
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(8px);
+padding:40px 45px;
+border-radius:25px;
+width:380px;
+color:rgb(206,215,205);
+}
+
+.login-box h2{
+text-align:center;
+margin-bottom:25px;
+font-size:1.8rem;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-bottom:18px;
+border-radius:18px;
+border:none;
+font-size:14px;
+}
+
+button{
+width:100%;
+padding:12px;
+border-radius:25px;
+border:none;
+background:linear-gradient(135deg,#2ecc71,#27ae60);
+color:rgba(108,113,109,0.862);
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.04);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-bg">
+
+<div class="login-box">
+
+<h2>{{ text.login }}</h2>
+
+<form method="POST">
+
+<input type="email" name="email" placeholder="{{ text.email }}" required>
+
+<input type="text" name="phone" placeholder="{{ text.phone }}" required>
+
+<button type="submit">
+{{ text.login }}
+</button>
+
+</form>
+
+<p style="margin-top:15px;font-size:14px;">
+
+{{ translate("Don't have an account") }}?
+
+<a href="{{ url_for('register') }}" style="color:#2ecc71;">
+
+{{ text.register }}
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
+
+{% endblock %}
