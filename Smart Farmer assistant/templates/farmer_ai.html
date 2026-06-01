@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Farmer AI</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+body{
+background:url("{{ url_for('static', filename='images/ai.png') }}") no-repeat center/cover;
+min-height:100vh;
+}
+
+.ai-overlay{
+min-height:100vh;
+background:rgba(223,213,213,0.345);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
+}
+
+.ai-container{
+width:100%;
+max-width:900px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(14px);
+border-radius:25px;
+padding:25px;
+color:#fdf9f9;
+box-shadow:0 20px 45px rgba(0,0,0,0.4);
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+}
+
+.chat-box{
+display:flex;
+flex-direction:column;
+height:520px;
+}
+
+.chat-header{
+font-size:1.4rem;
+font-weight:bold;
+margin-bottom:12px;
+}
+
+.chat-messages{
+flex:1;
+background:rgba(0,0,0,0.35);
+border-radius:15px;
+padding:15px;
+overflow-y:auto;
+margin-bottom:12px;
+}
+
+.msg{
+margin-bottom:12px;
+max-width:80%;
+padding:10px 14px;
+border-radius:14px;
+font-size:0.95rem;
+line-height:1.4;
+}
+
+.user{
+background:#2ecc71;
+color:#000;
+margin-left:auto;
+}
+
+.bot{
+background:rgba(255,255,255,0.05);
+}
+
+.chat-input{
+display:flex;
+gap:10px;
+}
+
+.chat-input input{
+flex:1;
+padding:12px;
+border-radius:20px;
+border:none;
+outline:none;
+}
+
+.chat-input button{
+padding:12px 22px;
+border-radius:20px;
+border:none;
+cursor:pointer;
+background:linear-gradient(135deg,#2ecc71,#27ae60);
+font-weight:bold;
+}
+
+.updates-box{
+background:rgba(0,0,0,0.35);
+border-radius:18px;
+padding:15px;
+height:520px;
+overflow-y:auto;
+}
+
+.updates-box h3{
+margin-bottom:10px;
+font-size:1.1rem;
+}
+
+.update{
+background:rgba(255,255,255,0.18);
+padding:10px;
+border-radius:12px;
+margin-bottom:10px;
+font-size:0.9rem;
+}
+
+.lang-select{
+margin-bottom:10px;
+}
+
+.lang-select select{
+padding:8px;
+border-radius:10px;
+border:none;
+outline:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="ai-overlay">
+
+<div class="ai-container">
+
+<!-- CHATBOT -->
+<div class="chat-box">
+
+<div class="chat-header">🤖 My Farmer AI</div>
+
+<div class="lang-select">
+🌐 Language:
+
+<select id="language">
+<option value="en">English</option>
+<option value="ml">Malayalam</option>
+<option value="ta">Tamil</option>
+<option value="te">Telugu</option>
+<option value="kn">Kannada</option>
+<option value="hi">Hindi</option>
+</select>
+
+</div>
+
+<div class="chat-messages" id="chat">
+
+<div class="msg bot">
+Hello 👋 I’m your Farmer AI.
+Ask me about crops, diseases, fertilizers, weather, or government schemes 🌾
+</div>
+
+</div>
+
+<div class="chat-input">
+
+<input type="text" id="userInput" placeholder="Ask your farming question...">
+
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+<!-- AGRICULTURE UPDATES -->
+
+<div class="updates-box">
+
+<h3>📰 Agriculture Updates</h3>
+
+<div class="update">🌧 IMD predicts good monsoon for South India this season.</div>
+
+<div class="update">🌱 Government announces subsidy for drip irrigation.</div>
+
+<div class="update">🚜 New PM-KISAN installment to be released soon.</div>
+
+<div class="update">🌾 Organic farming training camps starting next month.</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+async function sendMessage(){
+
+const input=document.getElementById("userInput");
+const chat=document.getElementById("chat");
+const lang=document.getElementById("language").value;
+const text=input.value.trim();
+
+if(!text) return;
+
+const userMsg=document.createElement("div");
+userMsg.className="msg user";
+userMsg.innerText=text;
+chat.appendChild(userMsg);
+
+input.value="";
+chat.scrollTop=chat.scrollHeight;
+
+const thinkingMsg=document.createElement("div");
+thinkingMsg.className="msg bot";
+thinkingMsg.id="thinking";
+thinkingMsg.innerText="🤖 AI is thinking...";
+chat.appendChild(thinkingMsg);
+
+try{
+
+const response=await fetch("/chat",{
+
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+message:text,
+lang:lang
+})
+
+});
+
+const data=await response.json();
+
+document.getElementById("thinking").remove();
+
+const botMsg=document.createElement("div");
+botMsg.className="msg bot";
+botMsg.innerText=data.reply;
+chat.appendChild(botMsg);
+
+}catch(error){
+
+document.getElementById("thinking").remove();
+
+const errorMsg=document.createElement("div");
+errorMsg.className="msg bot";
+errorMsg.innerText="⚠️ Error connecting to AI server.";
+chat.appendChild(errorMsg);
+
+}
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+</script>
+
+</body>
+</html>
+
+{% endblock %}

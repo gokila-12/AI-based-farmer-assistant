@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Farmer Assistant</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+html,body{
+height:100%;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+position:relative;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+height:100vh;
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.6);
+z-index:0;
+}
+
+.welcome-box{
+position:relative;
+z-index:1;
+background:rgba(0,0,0,0.4);
+padding:40px 50px;
+border-radius:20px;
+text-align:center;
+max-width:450px;
+}
+
+.welcome-box h1{
+font-size:3rem;
+margin-bottom:20px;
+}
+
+select{
+padding:8px 12px;
+font-size:1rem;
+border-radius:10px;
+border:none;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 28px;
+font-size:16px;
+border-radius:25px;
+border:none;
+cursor:pointer;
+background:linear-gradient(135deg,#2ecc71,#27ae60);
+color:#154c32;
+margin:8px;
+transition:transform 0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.btn.secondary{
+background:linear-gradient(135deg,#3498db,#2980b9);
+color:white;
+}
+
+</style>
+
+</head>
+
+<body class="welcome-page" style="background-image:url('/static/images/farmer_background.jpg');">
+
+<div class="overlay"></div>
+
+<div class="welcome-box">
+
+<h1>{{ text.greeting if text.greeting else "Hey Farmer..." }}</h1>
+
+<form method="POST" action="/set-language">
+
+<select name="lang">
+
+<option value="en">English</option>
+<option value="ml">Malayalam</option>
+<option value="ta">Tamil</option>
+<option value="te">Telugu</option>
+<option value="kn">Kannada</option>
+<option value="hi">Hindi</option>
+
+</select>
+
+<button type="submit">
+{{ translate("Continue") }}
+</button>
+
+</form>
+
+<br>
+
+<button class="btn" onclick="goToRegister()">
+{{ text.register }}
+</button>
+
+<button class="btn secondary" onclick="goToLogin()">
+{{ text.login }}
+</button>
+
+</div>
+
+<script>
+
+function goToRegister(){
+window.location.href="/register";
+}
+
+function goToLogin(){
+window.location.href="/login";
+}
+
+</script>
+
+</body>
+</html>
+
+{% endblock %}

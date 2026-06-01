@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ text.weather_dashboard }}</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+min-height:100vh;
+background:#1e1e1e url('{{ url_for("static", filename="images/weather.png") }}') no-repeat center/cover;
+background-size:cover;
+color:#fff;
+padding:40px;
+}
+
+.dashboard-box{
+max-width:1000px;
+margin:auto;
+background:rgba(34,34,34,0.95);
+border-radius:20px;
+padding:30px;
+box-shadow:0 8px 30px rgba(0,0,0,0.5);
+}
+
+.header{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header h2{
+font-size:32px;
+color:#2ecc71;
+width:100%;
+}
+
+.header input{
+padding:10px 15px;
+border-radius:25px;
+border:none;
+width:250px;
+outline:none;
+}
+
+.header button{
+padding:10px 20px;
+border:none;
+border-radius:25px;
+background:#2ecc71;
+color:#fff;
+font-weight:600;
+cursor:pointer;
+}
+
+.header button:hover{
+background:#27ae60;
+}
+
+.weather-card{
+background:rgba(0,0,0,0.4);
+border-radius:18px;
+padding:20px;
+margin-bottom:15px;
+}
+
+.weather-info h3{
+color:#2ecc71;
+margin-bottom:8px;
+}
+
+.weather-icon{
+font-size:40px;
+}
+
+.news-section{
+margin-top:25px;
+}
+
+.news-section h3{
+color:#2ecc71;
+margin-bottom:10px;
+}
+
+.news-list li{
+padding:10px;
+background:rgba(255,255,255,0.05);
+border-radius:10px;
+margin-bottom:6px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard-box">
+
+<div class="header">
+
+<h2>🌤️ {{ text.weather_dashboard }}</h2>
+
+<input type="text" id="placeInput" placeholder="{{ text.enter_place }}">
+
+<button onclick="addPlace()">➕ {{ text.add_place }}</button>
+
+<button onclick="getLocation()">📍 {{ text.my_location }}</button>
+
+</div>
+
+<div id="weatherContainer"></div>
+
+<div class="news-section">
+
+<h3>📰 {{ text.latest_weather_news }}</h3>
+
+<ul class="news-list" id="weatherNews"></ul>
+
+</div>
+
+</div>
+
+<script>
+
+const apiKey="546fa3458a4cb31dd7b7b47cb274188b";
+const newsKey="f2dcc6e9e8be4d8393abfbfc9372312a";
+
+const weatherContainer=document.getElementById("weatherContainer");
+const weatherNews=document.getElementById("weatherNews");
+
+function addPlace(){
+
+const place=document.getElementById("placeInput").value.trim();
+
+if(!place){
+
+alert("{{ text.enter_valid_place }}");
+return;
+
+}
+
+getWeather(place);
+
+}
+
+function getLocation(){
+
+if(!navigator.geolocation){
+
+alert("Geolocation not supported");
+return;
+
+}
+
+navigator.geolocation.getCurrentPosition(pos=>{
+
+getWeatherByCoords(pos.coords.latitude,pos.coords.longitude);
+
+});
+
+}
+
+function getWeather(place){
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${apiKey}&units=metric`)
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.cod!==200){
+
+alert("{{ text.place_not_found }}");
+return;
+
+}
+
+renderWeatherCard(data);
+
+});
+
+}
+
+function getWeatherByCoords(lat,lon){
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+
+.then(res=>res.json())
+
+.then(data=>renderWeatherCard(data));
+
+}
+
+function renderWeatherCard(data){
+
+const temp=data.main.temp.toFixed(1);
+const humidity=data.main.humidity;
+const wind=data.wind.speed;
+const desc=data.weather[0].description;
+const rain=data.rain ? data.rain["1h"]+" mm" : "0 mm";
+
+const div=document.createElement("div");
+
+div.className="weather-card";
+
+div.innerHTML=`
+
+<div class="weather-info">
+
+<h3>${data.name}</h3>
+
+<p>🌡 {{ text.temp }}: ${temp}°C</p>
+
+<p>💧 {{ text.humidity }}: ${humidity}%</p>
+
+<p>🌬 {{ text.wind }}: ${wind} m/s</p>
+
+<p>🌧 {{ text.rain }}: ${rain}</p>
+
+<p>📌 {{ text.condition }}: ${desc}</p>
+
+</div>
+
+`;
+
+weatherContainer.prepend(div);
+
+}
+
+function fetchWeatherNews(){
+
+fetch(`https://newsapi.org/v2/everything?q=weather&language=en&pageSize=6&apiKey=${newsKey}`)
+
+.then(res=>res.json())
+
+.then(data=>{
+
+weatherNews.innerHTML="";
+
+data.articles.forEach(article=>{
+
+const li=document.createElement("li");
+
+li.innerHTML=`<a href="${article.url}" target="_blank" style="color:#a0ffa0">${article.title}</a>`;
+
+weatherNews.appendChild(li);
+
+});
+
+});
+
+}
+
+fetchWeatherNews();
+
+</script>
+
+</body>
+</html>
+
+{% endblock %}

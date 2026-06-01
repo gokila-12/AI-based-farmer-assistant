@@ -1,0 +1,17 @@
+tensorflow==2.13.1
+keras==2.13.1
+flask==2.3.3
+flask-sqlalchemy==3.0.5
+SQLAlchemy<2.0
+typing_extensions>=4.7.0
+numpy
+opencv-python
+pillow
+pandas
+scikit-learn
+flask
+google-generativeai
+python-dotenv
+sentence-transformers
+googletrans==4.0.0-rc1
+

@@ -1,0 +1,19 @@
+soil_type,advantages,limitations,best_crops,fertilizer_tips,pest_management
+Loamy,"Highly fertile, good drainage, excellent moisture retention",Requires balanced nutrient management to maintain fertility,"Wheat, Rice, Sugarcane, Cotton, Vegetables",Apply balanced NPK and organic compost regularly,Use integrated pest management (IPM) practices
+Clay,"High nutrient retention, good water holding capacity","Poor drainage, compaction issues","Paddy, Broccoli, Cabbage",Add organic matter to improve aeration,Avoid overwatering to prevent fungal diseases
+Sandy,"Excellent drainage, easy root penetration",Low nutrient and water retention,"Groundnut, Carrot, Potato, Watermelon",Frequent light fertilization recommended,Mulching helps reduce moisture loss
+Silty,"Good fertility, smooth texture, retains moisture well",Erosion-prone,"Rice, Pulses, Oilseeds",Use cover crops to prevent erosion,Monitor drainage to prevent root diseases
+Black,"Rich in clay and nutrients, good moisture retention",Poor drainage when wet,"Cotton, Soybean, Sorghum",Nitrogen and phosphorus supplementation beneficial,Ensure proper drainage management
+soil_type,advantages,limitations,best_crops,fertilizer_tips,pest_management
+Loamy,"Highly fertile, good drainage","Needs nutrient maintenance","Wheat, Rice, Sugarcane, Vegetables","Balanced NPK + compost","General IPM"
+Clay,"High nutrient retention","Poor drainage","Paddy, Broccoli","Add organic matter","Avoid waterlogging"
+Sandy,"Excellent drainage","Low fertility","Groundnut, Carrot","Frequent light feeding","Mulching recommended"
+Silty,"Good fertility, smooth texture","Erosion-prone","Rice, Pulses","Use cover crops","Monitor drainage"
+Black,"Rich in minerals","Poor drainage when wet","Cotton, Soybean","Nitrogen & phosphorus","Ensure aeration"
+Red,"Well-drained","Low nitrogen","Millets, Groundnut","Add compost + NPK","Monitor pests"
+Laterite,"Rich in iron","Low fertility","Cashew, Coconut","Heavy manuring","Soil conditioning"
+Alluvial,"Very fertile","Can be sandy in parts","Rice, Wheat","Balanced fertilization","Regular monitoring"
+Desert,"Quick drainage","Low moisture","Bajra, Dates","Organic matter needed","Water conservation"
+Mountain,"Rich organic matter","Erosion risk","Tea, Spices","Terrace farming nutrients","Slope management"
+Peaty,"High organic content","Acidic","Rice, Jute","Lime treatment","Fungal monitoring"
+Saline,"Mineral rich","High salt","Barley, Cotton","Gypsum treatment","Salt management"

@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ text.soil }}</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:url("/static/images/soil_bg.png") no-repeat center/cover;
+min-height:100vh;
+}
+
+.overlay{
+min-height:100vh;
+background:rgba(0,0,0,0.45);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
+}
+
+.container{
+width:100%;
+max-width:900px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(14px);
+border-radius:25px;
+padding:30px;
+color:#fff;
+box-shadow:0 25px 50px rgba(0,0,0,0.5);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+color:#2ecc71;
+}
+
+select{
+width:100%;
+padding:12px;
+border-radius:12px;
+border:none;
+margin-bottom:20px;
+font-size:1rem;
+}
+
+.card{
+background:rgba(50,50,50,0.6);
+border-left:5px solid #2ecc71;
+padding:15px;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.label{
+font-weight:bold;
+color:#2ecc71;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="container">
+
+<h2>🌱 {{ text.soil_title }}</h2>
+
+<select id="soilSelect" onchange="loadSoilData()">
+
+<option value="Loamy">{{ translate("Loamy") }}</option>
+<option value="Clay">{{ translate("Clay") }}</option>
+<option value="Sandy">{{ translate("Sandy") }}</option>
+<option value="Silty">{{ translate("Silty") }}</option>
+<option value="Black (Regur)">{{ translate("Black (Regur)") }}</option>
+<option value="Red">{{ translate("Red") }}</option>
+<option value="Laterite">{{ translate("Laterite") }}</option>
+<option value="Alluvial">{{ translate("Alluvial") }}</option>
+<option value="Desert / Arid">{{ translate("Desert / Arid") }}</option>
+<option value="Mountain / Forest">{{ translate("Mountain / Forest") }}</option>
+<option value="Peaty / Marshy">{{ translate("Peaty / Marshy") }}</option>
+<option value="Saline / Alkaline">{{ translate("Saline / Alkaline") }}</option>
+
+</select>
+
+<div id="soilResult"></div>
+
+</div>
+</div>
+
+<script>
+
+async function loadSoilData(){
+
+const soil=document.getElementById("soilSelect").value;
+
+const resultBox=document.getElementById("soilResult");
+
+if(!soil){
+
+resultBox.innerHTML="";
+return;
+
+}
+
+resultBox.innerHTML="🌿 {{ text.loading_soil }}";
+
+try{
+
+const res=await fetch(`/get-soil?soil=${soil}`);
+
+const data=await res.json();
+
+if(data.error){
+
+resultBox.innerHTML=`<div class="card">${data.error}</div>`;
+return;
+
+}
+
+resultBox.innerHTML=`
+
+<div class="card"><span class="label">✅ {{ text.advantages }}:</span><br>${data.advantages}</div>
+
+<div class="card"><span class="label">⚠️ {{ text.limitations }}:</span><br>${data.limitations}</div>
+
+<div class="card"><span class="label">🌾 {{ text.best_crops }}:</span><br>${data.best_crops}</div>
+
+<div class="card"><span class="label">🧪 {{ text.fertilizer_tips }}:</span><br>${data.fertilizer_tips}</div>
+
+<div class="card"><span class="label">🐛 {{ text.pest_management }}:</span><br>${data.pest_management}</div>
+
+`;
+
+}
+
+catch(err){
+
+resultBox.innerHTML=`<div class="card">⚠️ {{ text.error_loading_soil }}</div>`;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+
+{% endblock %}
