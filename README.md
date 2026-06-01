@@ -39,8 +39,8 @@ AI Based Farmer Assistant Platform is an intelligent agriculture support system 
 
 ## Government Schemes Information
 
-* Displays agriculture related government schemes
-* Provides state wise scheme details for farmers
+* Displays agriculture-related government schemes
+* Provides state-wise scheme details for farmers
 
 ## Farmer Support Chatbot
 
@@ -55,6 +55,51 @@ AI Based Farmer Assistant Platform is an intelligent agriculture support system 
 * The entire interface changes to the selected language
 * Chatbot responses are also generated in the selected language
 * Improves accessibility for farmers from different regions
+
+---
+
+# Screenshots
+
+## Login Page
+
+<img width="1600" height="812" alt="WhatsApp Image 2026-06-01 at 17 18 53" src="https://github.com/user-attachments/assets/5939215b-4582-4a98-bec7-065ba82e4bf2" />
+<img width="1600" height="805" alt="WhatsApp Image 2026-06-01 at 17 18 52" src="https://github.com/user-attachments/assets/12be5d11-ca1b-4246-9a7f-79eeff9193f3" />
+
+
+## Dashboard
+
+<img width="1600" height="795" alt="WhatsApp Image 2026-06-01 at 17 18 53 (1)" src="https://github.com/user-attachments/assets/b4da5a6d-4de7-4751-afe5-80ce237d5f42" />
+
+
+## Crop Disease Prediction
+
+<img width="1600" height="791" alt="WhatsApp Image 2026-06-01 at 17 18 53 (2)" src="https://github.com/user-attachments/assets/56693c4b-cbef-44e3-a12e-7ec36eaf43d8" />
+
+
+## Weather Information
+
+<img width="1600" height="795" alt="WhatsApp Image 2026-06-01 at 17 18 55" src="https://github.com/user-attachments/assets/1dd297b5-e0c2-43b2-91e9-1337b204e759" />
+
+
+## Soil Recommendation
+
+<img width="1600" height="802" alt="WhatsApp Image 2026-06-01 at 17 18 55 (1)" src="https://github.com/user-attachments/assets/b4305d87-e697-4e8e-82c6-cb44b549bf74" />
+
+
+## Market Price and Location
+
+<img width="1600" height="805" alt="WhatsApp Image 2026-06-01 at 17 18 54 (2)" src="https://github.com/user-attachments/assets/5bc3996c-fa87-43f9-8daf-fb44214f0f94" />
+<img width="1600" height="742" alt="WhatsApp Image 2026-06-01 at 17 18 54 (1)" src="https://github.com/user-attachments/assets/f74cddd5-7bac-48be-9207-6e87bd40ef08" />
+
+## Government Schemes
+
+<img width="1600" height="739" alt="WhatsApp Image 2026-06-01 at 17 18 54" src="https://github.com/user-attachments/assets/0182f18d-bf45-433e-8d11-734003b2a259" />
+
+
+## Farmer Chatbot
+
+<img width="1600" height="800" alt="WhatsApp Image 2026-06-01 at 17 18 56" src="https://github.com/user-attachments/assets/2819cddf-81ba-4adf-9585-23500949ad37" />
+
 
 ---
 
@@ -73,7 +118,7 @@ AI Based Farmer Assistant Platform is an intelligent agriculture support system 
 
 # Project Structure
 
-```bash id="e02xhj"
+```bash id="0k9olz"
 AI-based-farmer-assistant/
 │
 ├── data/
@@ -96,25 +141,25 @@ AI-based-farmer-assistant/
 
 ## 1. Clone the Repository
 
-```bash id="jg7nri"
+```bash id="4a5p2h"
 git clone https://github.com/your-username/AI-based-farmer-assistant.git
 ```
 
 ## 2. Navigate to the Project Directory
 
-```bash id="g2fxtd"
+```bash id="q4sk4j"
 cd AI-based-farmer-assistant
 ```
 
 ## 3. Install Required Dependencies
 
-```bash id="t55x1f"
+```bash id="l8r1kb"
 pip install -r requirements.txt
 ```
 
 ## 4. Run the Application
 
-```bash id="c8pr9j"
+```bash id="hl7q1g"
 python app.py
 ```
 
@@ -160,5 +205,6 @@ This project is licensed under the MIT License.
 
 Gokila Krishna
 B.Tech AI & ML Student
-Passionate about Artificial intelligence, Machine Learning and Web Development
+Passionate about Artificial Intelligence, Machine Learning, and Web Development
+
 
