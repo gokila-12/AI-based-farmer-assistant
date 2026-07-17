@@ -1,18 +1,21 @@
-# AI Based Farmer Assistant Platform
+<h1 align="center">🌱 AI Based Farmer Assistant Platform</h1>
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![Flask](https://img.shields.io/badge/Flask-Web_App-black)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11-blue">
+  <img src="https://img.shields.io/badge/Flask-Web_App-black">
+  <img src="https://img.shields.io/badge/License-MIT-green">
+  <img src="https://img.shields.io/badge/Status-Completed-brightgreen">
+</p>
 
+<p align="center">
 AI Based Farmer Assistant Platform is an AI-powered web application that helps farmers make informed agricultural decisions through crop disease detection, soil analysis, weather forecasting, market price tracking, government scheme information, and multilingual support. The platform combines Artificial Intelligence, Machine Learning, and web technologies to improve productivity and accessibility for farmers.
----
+</p>
 
 # Features
 
 ## Crop Leaf Disease Prediction
 
-* Detects crop leaf diseases using AI and Machine Learning
+* Detects crop leaf diseases using AI and machine Learning
 * Helps farmers identify diseases quickly and accurately
 * Supports better crop management and productivity
 
