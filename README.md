@@ -21,14 +21,16 @@ Framework: TensorFlow/Keras
 Input: Crop leaf image
 Output: Predicted disease with confidence score
 
-# How it work
-Farmer uploads leaf image
-        ↓
-CNN Model processes image
-        ↓
-Disease predicted
-        ↓
-Recommended solution displayed
+How it work:
+
+```mermaid
+flowchart TD
+    A[Farmer Uploads Crop Leaf Image] --> B[Image Preprocessing]
+    B --> C[CNN Disease Prediction Model]
+    C --> D[Disease Classification]
+    D --> E[Display Prediction Result]
+    E --> F[Provide Treatment & Farming Recommendations]
+```
 
 ## Weather Information and Updates
 
