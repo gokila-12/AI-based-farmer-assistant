@@ -1,5 +1,10 @@
 # AI Based Farmer Assistant Platform
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Flask](https://img.shields.io/badge/Flask-Web_App-black)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+
 AI Based Farmer Assistant Platform is an intelligent agriculture support system developed using Artificial Intelligence and Machine Learning technologies. The platform helps farmers with crop disease prediction, soil analysis, weather updates, market price information, farming schedules, government schemes, and multilingual farmer support through a user-friendly web application.
 
 ---
