@@ -19,11 +19,6 @@ AI Based Farmer Assistant Platform is an AI-powered web application that helps f
 * Helps farmers identify diseases quickly and accurately
 * Supports better crop management and productivity
 
-Model: Convolutional Neural Network (CNN)
-Framework: TensorFlow/Keras
-Input: Crop leaf image
-Output: Predicted disease with confidence score
-
 How it work:
 
 ```mermaid
