@@ -28,8 +28,7 @@ flowchart TD
     A[Farmer Uploads Crop Leaf Image] --> B[Image Preprocessing]
     B --> C[CNN Disease Prediction Model]
     C --> D[Disease Classification]
-    D --> E[Display Prediction Result]
-    E --> F[Provide Treatment & Farming Recommendations]
+    D --> E[Display Prediction Result with Accuracy]
 ```
 
 ## Weather Information and Updates
