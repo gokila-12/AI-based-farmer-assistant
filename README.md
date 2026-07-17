@@ -115,7 +115,9 @@ AI Based Farmer Assistant Platform is an intelligent agriculture support system 
 * CSS
 * JavaScript
 * Machine Learning
-* SQLite Database
+* CNN
+* Rule based system 
+* MySQL Database
 * Google Translate API
 
 ---
