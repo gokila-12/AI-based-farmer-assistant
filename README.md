@@ -60,6 +60,10 @@ AI Based Farmer Assistant Platform is an intelligent agriculture support system 
 
 # Screenshots
 
+## Architecture Diagram 
+<img width="1536" height="1024" alt="1000203820" src="https://github.com/user-attachments/assets/a6b1e788-a333-4ced-b822-cb4efc8b5eed" />
+
+
 ## Login Page
 
 <img width="1600" height="812" alt="WhatsApp Image 2026-06-01 at 17 18 53" src="https://github.com/user-attachments/assets/5939215b-4582-4a98-bec7-065ba82e4bf2" />
