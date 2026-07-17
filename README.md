@@ -5,8 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
-AI Based Farmer Assistant Platform is an intelligent agriculture support system developed using Artificial Intelligence and Machine Learning technologies. The platform helps farmers with crop disease prediction, soil analysis, weather updates, market price information, farming schedules, government schemes, and multilingual farmer support through a user-friendly web application.
-
+AI Based Farmer Assistant Platform is an AI-powered web application that helps farmers make informed agricultural decisions through crop disease detection, soil analysis, weather forecasting, market price tracking, government scheme information, and multilingual support. The platform combines Artificial Intelligence, Machine Learning, and web technologies to improve productivity and accessibility for farmers.
 ---
 
 # Features
@@ -16,6 +15,20 @@ AI Based Farmer Assistant Platform is an intelligent agriculture support system 
 * Detects crop leaf diseases using AI and Machine Learning
 * Helps farmers identify diseases quickly and accurately
 * Supports better crop management and productivity
+
+Model: Convolutional Neural Network (CNN)
+Framework: TensorFlow/Keras
+Input: Crop leaf image
+Output: Predicted disease with confidence score
+
+# How it work
+Farmer uploads leaf image
+        ↓
+CNN Model processes image
+        ↓
+Disease predicted
+        ↓
+Recommended solution displayed
 
 ## Weather Information and Updates
 
@@ -157,7 +170,7 @@ AI-based-farmer-assistant/
 ## 1. Clone the Repository
 
 ```bash id="4a5p2h"
-git clone https://github.com/your-username/AI-based-farmer-assistant.git
+git clone https://github.com/gokila-12/AI-based-farmer-assistant.git
 ```
 
 ## 2. Navigate to the Project Directory
